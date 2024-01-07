@@ -29,7 +29,7 @@ for i in range(epoch):
 #Forward Propogation 
     hinp=np.dot(X,wh)+ bh
     hlayer_act = sigmoid(hinp)      #HIDDEN LAYER ACTIVATION FUNCTION
-    outinp=np.dot(hlayer_  act,wout)+ bout
+    outinp=np.dot(hlayer_act,wout)+ bout
     output = sigmoid(outinp)
 
     outgrad = derivatives_sigmoid(output) 
