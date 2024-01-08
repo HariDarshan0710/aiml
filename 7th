@@ -41,7 +41,7 @@ plt.title('Real Clustering')
 plt.subplot(1, 3, 2)
 model1 = KMeans(n_clusters=3,n_init=10)
 model1.fit(X)  # Use Petal dimensions for clustering
-plt.scatter(X.Petal_Length, X.Petal_Width, c=colormap[model1.labels_], s=30)
+plt.scatter(X.Petal_Length, X.Petal_Width, c=colormap[model1.predict(X)], s=30)
 plt.title('K Mean Clustering')
 
 # EM Clustering
@@ -53,16 +53,16 @@ plt.title('GM Clustering')
 plt.show()
 
 print("Actual Target is:\n", iris.target)
-print("K Means:\n", model1.labels_)
+print("K Means:\n", model1.predict(X))
 print("EM:\n", model2.predict(X))
 
 # Calculate confusion matrix for KMeans
-cm_kmeans = confusion_matrix(Y, model1.labels_)
+cm_kmeans = confusion_matrix(Y, model1.predict(X))
 print("Confusion Matrix for KMeans:\n", cm_kmeans)
 
 # Calculate confusion matrix for EM
 cm_em = confusion_matrix(Y, model2.predict(X))
 print("Confusion Matrix for EM:\n", cm_em)
 
-print("Accuracy of KMeans is ", accuracy_score(Y, model1.labels_))
+print("Accuracy of KMeans is ", accuracy_score(Y, model1.predict(X)))
 print("Accuracy of EM is ", accuracy_score(Y, model2.predict(X)))
